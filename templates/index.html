@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    <title>C&R Pets</title>
+</head>
+<body>
+    <h1>All the Pets!</h1>
+    <table>
+        <thead>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Type</th>
+        </thead>
+        <tbody>
+            {% for pet in all_pets %}
+            <tr>
+                <td>{{ pet['pet_id'] }}</td>
+                <td>{{ pet['name'] }}</td>
+                <td>{{ pet['type'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <hr>
+    <h1>Add a Pet</h1>
+    <div>
+        <form action="/add" name="addpet" method="POST">
+            <label for="name">
+                Name <input type="text" name="fnameadd"><br>
+            </label>
+            <label for="type">
+                Type <input type="text" name="typeadd">
+            </label>
+            <input type="submit" value="Add" class="button">
+        </form>
+    </div>
+</body>
+</html>
